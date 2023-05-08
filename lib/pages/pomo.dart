@@ -5,8 +5,8 @@ class MyRaisedButton extends StatelessWidget {
   final String text;
   final Function onPressed;
 
-  const MyRaisedButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
-
+  const MyRaisedButton({Key? key, required this.text, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,43 +79,61 @@ class PomodoroTimerState extends State<PomodoroTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true, // to make it transparent
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('Pomodoro Timer'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '${_isWorking ? 'Work' : 'Break'} Time Left:',
-              style: const TextStyle(fontSize: 24),
-            ),
-            Text(
-              '${(timeLeft ~/ 60).toString().padLeft(2, '0')}:${(timeLeft % 60).toString().padLeft(2, '0')}',
-              style: const TextStyle(fontSize: 48),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                MyRaisedButton(
-                  text: isRunning ? 'Pause' : 'Start',
-                  onPressed: () {
-                    if (isRunning) {
-                      _stopTimer();
-                    } else {
-                      _startTimer();
-                    }
-                    isRunning = !isRunning;
-                  },
-                ),
-                const SizedBox(width: 16),
-                MyRaisedButton(
-                  text: 'Reset',
-                  onPressed: _resetTimer,
-                ),
-              ],
-            ),
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFebdcbe),
+              Color(0xFFdecaa2),
+              Color(0xFFded2ba),
+              Color(0xFFdbcdbf),
+              Color(0xFFdecaa2),
+              Color(0xFFebdcbe),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '${_isWorking ? 'Work' : 'Break'} Time Left:',
+                style: const TextStyle(fontSize: 24),
+              ),
+              Text(
+                '${(timeLeft ~/ 60).toString().padLeft(2, '0')}:${(timeLeft % 60).toString().padLeft(2, '0')}',
+                style: const TextStyle(fontSize: 48),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  MyRaisedButton(
+                    text: isRunning ? 'Pause' : 'Start',
+                    onPressed: () {
+                      if (isRunning) {
+                        _stopTimer();
+                      } else {
+                        _startTimer();
+                      }
+                      isRunning = !isRunning;
+                    },
+                  ),
+                  const SizedBox(width: 16),
+                  MyRaisedButton(
+                    text: 'Reset',
+                    onPressed: _resetTimer,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
