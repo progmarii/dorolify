@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           items: const [
             Icon(Icons.home),
             Icon(Icons.calendar_month),
-            Icon(Icons.lock_clock_rounded),
+            Icon(Icons.timer),
             Icon(Icons.message),
           ]),
     );

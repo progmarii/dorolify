@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                   width: 344 * fem,
                   height: 421 * fem,
                   child: Image.asset(
-                    'assets/page-1/images/room-1.png',
+                    'assets/page-1/images/dorolify-room-cat1.png',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -89,7 +89,7 @@ class Home extends StatelessWidget {
                   width: 275 * fem,
                   height: 200 * fem,
                   child: Image.asset(
-                    'assets/page-1/images/dorolify-1-1.png',
+                    'assets/page-1/images/dorolify.png',
                     fit: BoxFit.cover,
                   ),
                 ),
