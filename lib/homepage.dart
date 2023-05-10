@@ -3,6 +3,7 @@ import 'package:dorolfy/pages/home.dart';
 import 'package:dorolfy/pages/calendar.dart';
 import 'package:dorolfy/pages/pomo.dart';
 import 'package:dorolfy/pages/todo.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,22 +33,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onTap: _navigateBottomBar,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_rounded), label: 'Calendar'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.timer), label: 'Pomodoro Timer'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.message), label: 'To Do Lists'),
-        ],
-      ),
+      bottomNavigationBar: CurvedNavigationBar(
+          onTap: _navigateBottomBar,
+          height: 50.0,
+          backgroundColor: const Color.fromARGB(255, 223, 202, 161),
+          color: const Color(0xFFebdcbe),
+          items: const [
+            Icon(Icons.home),
+            Icon(Icons.calendar_month),
+            Icon(Icons.lock_clock_rounded),
+            Icon(Icons.message),
+          ]),
     );
   }
 }
