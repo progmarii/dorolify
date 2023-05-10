@@ -39,17 +39,34 @@ class TodoListState extends State<TodoList> {
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.transparent,
               title: const Text('Add a new task'),
             ),
-            body: TextField(
-              autofocus: true,
-              onSubmitted: (val) {
-                _addTodoItem(val);
-                Navigator.pop(context);
-              },
-              decoration: const InputDecoration(
-                hintText: 'Enter something to do...',
-                contentPadding: EdgeInsets.all(16.0),
+            body: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFFebdcbe),
+                    Color(0xFFdecaa2),
+                    Color(0xFFded2ba),
+                    Color(0xFFdbcdbf),
+                    Color(0xFFdecaa2),
+                    Color(0xFFebdcbe),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: TextField(
+                autofocus: true,
+                onSubmitted: (val) {
+                  _addTodoItem(val);
+                  Navigator.pop(context);
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Enter something to do...',
+                  contentPadding: EdgeInsets.all(16.0),
+                ),
               ),
             ),
           );
@@ -61,10 +78,28 @@ class TodoListState extends State<TodoList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true, // to make it transparent
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('To-Do List'),
       ),
-      body: _buildTodoList(),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFebdcbe),
+              Color(0xFFdecaa2),
+              Color(0xFFded2ba),
+              Color(0xFFdbcdbf),
+              Color(0xFFdecaa2),
+              Color(0xFFebdcbe),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: _buildTodoList(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _pushAddTodoScreen,
         tooltip: 'Add task',
